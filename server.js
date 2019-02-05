@@ -1,7 +1,7 @@
 var faker = require('faker');
 var mysql = require('mysql');
 // var express = require("express");
-var path = require("path");
+// var path = require("path");
 
 // var app = express();
 // var PORT = process.env.PORT || 8080;
@@ -15,7 +15,7 @@ var path = require("path");
 
 var connection = mysql.createConnection ({
     host: 'localhost',
-    port: 8889,
+    // port: 8889,
     user: 'root',
     password: 'root',
     database: 'join_us'
@@ -33,11 +33,23 @@ var connection = mysql.createConnection ({
 
 //INSERTING DATA
 
-var q = 'INSERT INTO users (email) VALUES ("rusty_the_dog@gmail.com")';
+// var q = 'INSERT INTO users (email) VALUES ("rusty_the_dog@gmail.com")';
 
-connection.query(q, function(err, results, fields) {
+// connection.query(q, function(err, results, fields) {
+//   if (err) throw err;
+//   console.log(results);
+// });
+
+//INSERTING DATA TAKE 2
+
+var person = 
+  {
+    email: faker.internet.email()
+  };
+
+connection.query('INSERT INTO users SET ?', person, function(err, result) {
   if (err) throw err;
-  console.log(results);
+  console.log(result);
 });
 
 connection.end();
