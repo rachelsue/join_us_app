@@ -21,11 +21,23 @@ var connection = mysql.createConnection ({
     database: 'join_us'
 }); 
 
-var q = 'SELECT COUNT(*) AS total FROM users';
+//SELECTING DATA
+
+// var q = 'SELECT COUNT(*) AS total FROM users';
+
+// connection.query(q, function(err, results, fields) {
+//   if (err) throw err;
+//   console.log(results[0].total);
+// });
+
+
+//INSERTING DATA
+
+var q = 'INSERT INTO users (email) VALUES ("rusty_the_dog@gmail.com")';
 
 connection.query(q, function(err, results, fields) {
   if (err) throw err;
-  console.log(results[0].total);
+  console.log(results);
 });
 
 connection.end();
